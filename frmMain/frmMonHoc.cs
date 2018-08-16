@@ -188,7 +188,7 @@ namespace frmMain
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi xóa giáo viên. Bạn hãy xóa lại\n" + ex.Message, "",
+                    MessageBox.Show("Lỗi xóa môn học. Bạn hãy xóa lại\n" + ex.Message, "",
                         MessageBoxButtons.OK);
                     this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
                     //bdsGV.Position = bdsGV.Find("MAKH", magv);
@@ -204,6 +204,20 @@ namespace frmMain
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            vitri = bdsMH.Position;
+            groupBox1.Enabled = true;
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = false;
+            btnGhi.Enabled = btnUndo.Enabled = true;
+            gcMH.Enabled = false;
+        }
+
+        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

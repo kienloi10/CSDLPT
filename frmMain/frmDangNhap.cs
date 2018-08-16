@@ -64,16 +64,22 @@ namespace frmMain
             Program.mGroup = Program.myReader.GetString(2);
             Program.myReader.Close();
             Program.conn.Close();
-            MessageBox.Show(Program.username + "," + Program.mGroup, "", MessageBoxButtons.OK);
+            // MessageBox.Show(Program.username + "," + Program.mGroup, "", MessageBoxButtons.OK);
 
-            /*Program.frmChinh.MAGV.Text = "Mã giảng viên: " + Program.username;
+
+            Program.frmChinh.MAGV.Text = "Mã: " + Program.username;
             Program.frmChinh.HOTEN.Text = "Họ tên: " + Program.mHoten;
-            Program.frmChinh.NHOM.Text = "Nhóm: " + Program.mGroup;*/
+            Program.frmChinh.NHOM.Text = "Nhóm: " + Program.mGroup;
         }
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.servername = tENCNComboBox.SelectedValue.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

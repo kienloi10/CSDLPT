@@ -57,5 +57,15 @@ namespace frmMain
                 f.Show();
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMAGV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
