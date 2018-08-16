@@ -37,7 +37,6 @@
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnSua = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
             this.btnReload = new DevExpress.XtraBars.BarButtonItem();
@@ -47,6 +46,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.dS = new frmMain.DS();
             this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
             this.mONHOCTableAdapter = new frmMain.DSTableAdapters.MONHOCTableAdapter();
@@ -168,12 +168,6 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Tìm";
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
             // btnGhi
             // 
             this.btnGhi.Caption = "Ghi";
@@ -244,6 +238,12 @@
             this.barDockControlRight.Location = new System.Drawing.Point(884, 51);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 572);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Tìm";
+            this.barButtonItem4.Id = 3;
+            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // dS
             // 

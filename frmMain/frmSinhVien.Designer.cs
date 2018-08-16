@@ -446,6 +446,7 @@
             this.txtMaLop.Size = new System.Drawing.Size(110, 21);
             this.txtMaLop.TabIndex = 10;
             this.txtMaLop.ValueMember = "MALOP";
+            this.txtMaLop.SelectedIndexChanged += new System.EventHandler(this.txtMaLop_SelectedIndexChanged);
             // 
             // v_DS_MALOP1BindingSource
             // 

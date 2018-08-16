@@ -92,3 +92,4 @@ D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\ja\DevExpress.Office.v17.1.Core.r
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\obj\Debug\frmMain.frmSinhVien.resources
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\obj\Debug\frmMain.frmMonHoc.resources
+D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\obj\Debug\frmMain.frmKhoa.resources

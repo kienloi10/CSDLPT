@@ -181,7 +181,7 @@ namespace frmMain
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*if (bdsBD.Count > 0)
+            if (bdsBD.Count > 0)
             {
                 MessageBox.Show("Không thể xóa vì đã có BẢNG ĐIỂM", "",
                        MessageBoxButtons.OK);
@@ -209,7 +209,7 @@ namespace frmMain
 
            
 
-            if (bdsSV.Count == 0) btnXoa.Enabled = false;*/
+            if (bdsSV.Count == 0) btnXoa.Enabled = false;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -247,6 +247,11 @@ namespace frmMain
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaLop_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
