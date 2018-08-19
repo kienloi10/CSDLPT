@@ -17,7 +17,7 @@ namespace frmMain
         public frmXemKQ()
         {
             InitializeComponent();
-            PhanTichBaiThi();
+            HienThi();
         }
 
         private void frmXemKQ_Load(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace frmMain
                     ch[i].DAP_AN1 = myReader.GetString(5).ToString().Trim();
                 }
                 myReader.Close();
+                
             }
             
         }
@@ -73,7 +74,30 @@ namespace frmMain
 
         public void HienThi()
         {
-
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt.Columns.Add("CauSo");
+            dt.Columns.Add("NoiDung");
+            dt.Columns.Add("CacLuaChon");
+            dt.Columns.Add("DapAn");
+            dt.Columns.Add("DaChon");
+            PhanTichBaiThi();
+            for(int i = 0; i<ch.Count; i++)
+            {        
+                DataRow _ravi = dt.NewRow();
+                _ravi["CauSo"] = ch[i].MACH1;
+                _ravi["NoiDung"] = ch[i].NOIDUNG1;
+                _ravi["CacLuaChon"] = "A: " + ch[i].A1 +Environment.NewLine 
+                                       + " B: " + ch[i].B1+ Environment.NewLine
+                                      + " C: " + ch[i].C1 + "\n"
+                                       + " D: " + ch[i].D1 + "\n".Replace("\n",
+                                                         Environment.NewLine); ;
+                _ravi["DapAn"] = ch[i].DAP_AN1;
+                _ravi["DaChon"] = ch[i].Chon1;
+                dt.Rows.Add(_ravi);
+            }
+            
+            this.gvCH.DataSource = dt;
         }
     }
 }

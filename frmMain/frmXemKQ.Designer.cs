@@ -33,15 +33,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.clCauSo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clNoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clCacChonLua = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clDA = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clChon = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.gvCH = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCH)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,69 +82,20 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Lần";
             // 
-            // gridControl1
+            // gvCH
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControl1.Location = new System.Drawing.Point(0, 204);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(800, 246);
-            this.gridControl1.TabIndex = 5;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.clCauSo,
-            this.clNoiDung,
-            this.clCacChonLua,
-            this.clDA,
-            this.clChon});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
-            // clCauSo
-            // 
-            this.clCauSo.Caption = "Câu số";
-            this.clCauSo.Name = "clCauSo";
-            this.clCauSo.Visible = true;
-            this.clCauSo.VisibleIndex = 0;
-            // 
-            // clNoiDung
-            // 
-            this.clNoiDung.Caption = "Nội dung";
-            this.clNoiDung.Name = "clNoiDung";
-            this.clNoiDung.Visible = true;
-            this.clNoiDung.VisibleIndex = 1;
-            // 
-            // clCacChonLua
-            // 
-            this.clCacChonLua.Caption = "Các chọn lựa";
-            this.clCacChonLua.Name = "clCacChonLua";
-            this.clCacChonLua.Visible = true;
-            this.clCacChonLua.VisibleIndex = 2;
-            // 
-            // clDA
-            // 
-            this.clDA.Caption = "Đáp án";
-            this.clDA.Name = "clDA";
-            this.clDA.Visible = true;
-            this.clDA.VisibleIndex = 3;
-            // 
-            // clChon
-            // 
-            this.clChon.Caption = "Đã chọn";
-            this.clChon.Name = "clChon";
-            this.clChon.Visible = true;
-            this.clChon.VisibleIndex = 4;
+            this.gvCH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvCH.Location = new System.Drawing.Point(1, 187);
+            this.gvCH.Name = "gvCH";
+            this.gvCH.Size = new System.Drawing.Size(797, 263);
+            this.gvCH.TabIndex = 5;
             // 
             // frmXemKQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gvCH);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -160,8 +104,7 @@
             this.Name = "frmXemKQ";
             this.Text = "frmXemKQ";
             this.Load += new System.EventHandler(this.frmXemKQ_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,12 +117,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn clCauSo;
-        private DevExpress.XtraGrid.Columns.GridColumn clNoiDung;
-        private DevExpress.XtraGrid.Columns.GridColumn clCacChonLua;
-        private DevExpress.XtraGrid.Columns.GridColumn clDA;
-        private DevExpress.XtraGrid.Columns.GridColumn clChon;
+        private System.Windows.Forms.DataGridView gvCH;
     }
 }
