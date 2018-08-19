@@ -15,7 +15,7 @@ namespace frmMain
         {
             InitializeComponent();
         }
-        private Form CheckExists(Type ftype)
+        public Form CheckExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)
                 if (f.GetType() == ftype)
@@ -83,6 +83,30 @@ namespace frmMain
         private void Đ8aan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmChuanBiThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmChuanBiThi f = new frmChuanBiThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmXemKQ));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmXemKQ f = new frmXemKQ();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }

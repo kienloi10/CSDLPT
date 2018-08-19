@@ -101,6 +101,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(272, 20);
             this.txtPass.TabIndex = 6;
+            this.txtPass.Text = "123";
             // 
             // txtID
             // 
@@ -108,6 +109,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(272, 20);
             this.txtID.TabIndex = 5;
+            this.txtID.Text = "lvt";
             // 
             // label1
             // 
