@@ -35,6 +35,7 @@
             System.Windows.Forms.Label nGAYSINHLabel;
             System.Windows.Forms.Label dIACHILabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSinhVien));
+            System.Windows.Forms.Label mALOPLabel;
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -66,7 +67,6 @@
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtMaLop = new System.Windows.Forms.ComboBox();
             this.v_DS_MALOP1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRACNGHIEMDataSet = new frmMain.TRACNGHIEMDataSet();
             this.txtDiaChi = new DevExpress.XtraEditors.TextEdit();
@@ -78,11 +78,13 @@
             this.bANGDIEMTableAdapter = new frmMain.DSTableAdapters.BANGDIEMTableAdapter();
             this.v_DS_MALOP1TableAdapter = new frmMain.TRACNGHIEMDataSetTableAdapters.V_DS_MALOP1TableAdapter();
             this.tableAdapterManager1 = new frmMain.TRACNGHIEMDataSetTableAdapters.TableAdapterManager();
+            this.cmbMALOP = new System.Windows.Forms.ComboBox();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
             nGAYSINHLabel = new System.Windows.Forms.Label();
             dIACHILabel = new System.Windows.Forms.Label();
+            mALOPLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
@@ -303,7 +305,7 @@
             // 
             this.cmbCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCoSo.FormattingEnabled = true;
-            this.cmbCoSo.Location = new System.Drawing.Point(381, 28);
+            this.cmbCoSo.Location = new System.Drawing.Point(354, 25);
             this.cmbCoSo.Name = "cmbCoSo";
             this.cmbCoSo.Size = new System.Drawing.Size(121, 21);
             this.cmbCoSo.TabIndex = 1;
@@ -314,9 +316,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(289, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Cơ sở: ";
             // 
             // DS
             // 
@@ -417,7 +419,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtMaLop);
+            this.groupBox1.Controls.Add(mALOPLabel);
+            this.groupBox1.Controls.Add(this.cmbMALOP);
             this.groupBox1.Controls.Add(dIACHILabel);
             this.groupBox1.Controls.Add(this.txtDiaChi);
             this.groupBox1.Controls.Add(nGAYSINHLabel);
@@ -435,18 +438,6 @@
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // txtMaLop
-            // 
-            this.txtMaLop.DataSource = this.v_DS_MALOP1BindingSource;
-            this.txtMaLop.DisplayMember = "MALOP";
-            this.txtMaLop.FormattingEnabled = true;
-            this.txtMaLop.Location = new System.Drawing.Point(93, 181);
-            this.txtMaLop.Name = "txtMaLop";
-            this.txtMaLop.Size = new System.Drawing.Size(110, 21);
-            this.txtMaLop.TabIndex = 10;
-            this.txtMaLop.ValueMember = "MALOP";
-            this.txtMaLop.SelectedIndexChanged += new System.EventHandler(this.txtMaLop_SelectedIndexChanged);
             // 
             // v_DS_MALOP1BindingSource
             // 
@@ -471,7 +462,7 @@
             // 
             this.txtNgaySinh.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "NGAYSINH", true));
             this.txtNgaySinh.EditValue = null;
-            this.txtNgaySinh.Location = new System.Drawing.Point(93, 89);
+            this.txtNgaySinh.Location = new System.Drawing.Point(103, 89);
             this.txtNgaySinh.MenuManager = this.barManager1;
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -535,6 +526,24 @@
             this.tableAdapterManager1.MONHOCTableAdapter = null;
             this.tableAdapterManager1.SINHVIENTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = frmMain.TRACNGHIEMDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // mALOPLabel
+            // 
+            mALOPLabel.AutoSize = true;
+            mALOPLabel.Location = new System.Drawing.Point(38, 147);
+            mALOPLabel.Name = "mALOPLabel";
+            mALOPLabel.Size = new System.Drawing.Size(47, 13);
+            mALOPLabel.TabIndex = 10;
+            mALOPLabel.Text = "MALOP:";
+            // 
+            // cmbMALOP
+            // 
+            this.cmbMALOP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsSV, "MALOP", true));
+            this.cmbMALOP.FormattingEnabled = true;
+            this.cmbMALOP.Location = new System.Drawing.Point(91, 144);
+            this.cmbMALOP.Name = "cmbMALOP";
+            this.cmbMALOP.Size = new System.Drawing.Size(121, 21);
+            this.cmbMALOP.TabIndex = 11;
             // 
             // frmSinhVien
             // 
@@ -618,6 +627,6 @@
         private System.Windows.Forms.BindingSource v_DS_MALOP1BindingSource;
         private TRACNGHIEMDataSetTableAdapters.V_DS_MALOP1TableAdapter v_DS_MALOP1TableAdapter;
         private TRACNGHIEMDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.ComboBox txtMaLop;
+        private System.Windows.Forms.ComboBox cmbMALOP;
     }
 }

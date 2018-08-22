@@ -41,16 +41,7 @@ namespace frmMain
                 , m.Field<string>("A"), m.Field<string>("B"), m.Field<string>("C"), m.Field<string>("D"), m.Field<string>("NOIDUNG"))
             {
 
-                //MACH1 = m.Field<int>("CAUHOI"),
-                //MAMH1 = m.Field<string>("MAMH"),
-                //TRINHDO1 = m.Field<string>("TRINHDO"),
-               /* NOIDUNG1 = m.Field<string>("NOIDUNG"),
-                A1 = m.Field<string>("A"),
-                B1 = m.Field<string>("B"),
-                C1 = m.Field<string>("C"),
-                D1 = m.Field<string>("D"),
-                DAP_AN1 = m.Field<char>("DAP_AN"),*/
-                //MAGV1 = m.Field<string>("MAGV"),
+
             }).ToList();
             return listCauHoi;
         }
@@ -76,22 +67,19 @@ namespace frmMain
                     
                     txtLop.Text = Program.myReader.GetString(0);
                     malop = Program.myReader.GetString(1);
-                Program.myReader.Close();
+                    Program.myReader.Close();
                     
 
 
                     string sql = " EXEC SP_MonHocCuaSinhVienThi '" + Program.username.Trim() + "','"+ngaythi+"'";
-                   // SqlCommand com = new SqlCommand(sql, Program.conn);
-                   // SqlDataAdapter da = new SqlDataAdapter(com);
-                   // DataTable dt = new DataTable();
-                   // da.Fill(Program);
+                   
                     cmbMH.DataSource = Program.ExecSqlDataTable(sql,Program.connstr);
                     cmbMH.ValueMember = Program.ExecSqlDataTable(sql, Program.connstr).Columns["MAMH"].ToString();
                     cmbMH.DisplayMember = Program.ExecSqlDataTable(sql, Program.connstr).Columns["TENMH"].ToString();
 
                 
                 
-                mamonhoc = cmbMH.SelectedValue.ToString();
+                
 
                 /*String sql1 = "EXEC SP_LAYLANTHI '" + mamonhoc.ToString().Trim() + "','" + txtLop.Text.ToString().Trim() + "','" + ngaythi.ToString().Trim() + "'";
                 Program.myReader = Program.ExecSqlDataReader(sql1);
@@ -109,6 +97,7 @@ namespace frmMain
                 }
                 else
                 {
+                    mamonhoc = cmbMH.SelectedValue.ToString();
                     int lanthi;
                     SqlDataReader myReader;
                     String sql1 = "SELECT GIAOVIEN_DANGKY.LAN,GIAOVIEN_DANGKY.TRINHDO,GIAOVIEN_DANGKY.SOCAUTHI,GIAOVIEN_DANGKY.THOIGIAN FROM GIAOVIEN_DANGKY WHERE MAMH = '" + mamonhoc.Trim() + "' AND MALOP = '" + malop.Trim() + "' AND NGAYTHI = '" + ngaythi + "'";
@@ -139,6 +128,8 @@ namespace frmMain
                     txtHoTen.Text = Program.mHoten;
                     txtMaSV.Text = Program.username;
                     txtLop.Text = "";
+
+                    
                 }
 
             
@@ -152,7 +143,6 @@ namespace frmMain
         private void btnHuy_Click(object sender, EventArgs e)
         {
              this.Dispose();
-           // MessageBox.Show(mamonhoc, "", MessageBoxButtons.OK);
         }
 
         private void btnThi_Click(object sender, EventArgs e)

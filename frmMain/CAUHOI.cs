@@ -17,8 +17,7 @@ namespace frmMain
         private String NOIDUNG;
         private String TRINHDO;
         private String Chon;
-        //private String MAMH;
-        // private String MAGV;
+        
 
         public CAUHOI()
         {
@@ -142,31 +141,7 @@ namespace frmMain
         }
 
 
-        /*public string MAMH1
-        {
-            get
-            {
-                return MAMH;
-            }
-
-            set
-            {
-                MAMH = value;
-            }
-        }
-
-        public string MAGV1
-        {
-            get
-            {
-                return MAGV;
-            }
-
-            set
-            {
-                MAGV = value;
-            }
-        }*/
+        
 
         public CAUHOI(int mACH, string dAP_AN, string a, string b, string c, string d, string nOIDUNG)
         {
@@ -177,9 +152,7 @@ namespace frmMain
             C1 = c;
             D1 = d;
             NOIDUNG1 = nOIDUNG;
-            //TRINHDO1 = tRINHDO;
-            //MAMH1 = mAMH;
-            // MAGV1 = mAGV;
+           
         }
 
     }

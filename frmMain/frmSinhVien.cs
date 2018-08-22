@@ -118,7 +118,7 @@ namespace frmMain
             bdsSV.AddNew();
 
 
-            txtMaLop.Text = macn;
+            //txtMaLop.Text = macn;
 
             txtMaSV.Text = "";
             txtTen.Text = "";

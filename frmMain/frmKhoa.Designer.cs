@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhoa));
+            System.Windows.Forms.Label mAKHLabel;
+            System.Windows.Forms.Label tENKHLabel;
+            System.Windows.Forms.Label mACSLabel;
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -49,19 +51,6 @@
             this.kHOATableAdapter = new frmMain.DSTableAdapters.KHOATableAdapter();
             this.tableAdapterManager = new frmMain.DSTableAdapters.TableAdapterManager();
             this.lOPTableAdapter = new frmMain.DSTableAdapters.LOPTableAdapter();
-            this.kHOABindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.kHOABindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.gcKhoa = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAKH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,14 +59,25 @@
             this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCoSo = new System.Windows.Forms.ComboBox();
+            this.txtMKH = new DevExpress.XtraEditors.TextEdit();
+            this.txtTenKH = new DevExpress.XtraEditors.TextEdit();
+            this.txtMACS = new DevExpress.XtraEditors.TextEdit();
+            this.btnReload = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExit = new DevExpress.XtraBars.BarButtonItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            mAKHLabel = new System.Windows.Forms.Label();
+            tENKHLabel = new System.Windows.Forms.Label();
+            mACSLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kHOABindingNavigator)).BeginInit();
-            this.kHOABindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMKH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMACS.Properties)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -92,14 +92,16 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5,
-            this.barButtonItem6});
+            this.btnThem,
+            this.btnXoa,
+            this.btnSua,
+            this.btnGhi,
+            this.btnUndo,
+            this.btnThoat,
+            this.btnReload,
+            this.btnExit});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -117,52 +119,58 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnThem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnXoa),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSua),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnGhi),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnUndo),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnReload),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExit)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // barButtonItem1
+            // btnThem
             // 
-            this.barButtonItem1.Caption = "Thêm";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.btnThem.Caption = "Thêm";
+            this.btnThem.Id = 0;
+            this.btnThem.Name = "btnThem";
+            this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
-            // barButtonItem2
+            // btnXoa
             // 
-            this.barButtonItem2.Caption = "Xóa";
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnXoa.Caption = "Xóa";
+            this.btnXoa.Id = 1;
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
             // 
-            // barButtonItem3
+            // btnSua
             // 
-            this.barButtonItem3.Caption = "Sửa";
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.btnSua.Caption = "Sửa";
+            this.btnSua.Id = 2;
+            this.btnSua.Name = "btnSua";
+            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
-            // barButtonItem4
+            // btnGhi
             // 
-            this.barButtonItem4.Caption = "Ghi";
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.btnGhi.Caption = "Ghi";
+            this.btnGhi.Id = 3;
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGhi_ItemClick);
             // 
-            // barButtonItem5
+            // btnUndo
             // 
-            this.barButtonItem5.Caption = "Undo";
-            this.barButtonItem5.Id = 4;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Id = 4;
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
-            // barButtonItem6
+            // btnThoat
             // 
-            this.barButtonItem6.Caption = "Thoát";
-            this.barButtonItem6.Id = 5;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            this.btnThoat.Caption = "Thoát";
+            this.btnThoat.Id = 5;
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // bar3
             // 
@@ -182,7 +190,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(800, 51);
+            this.barDockControlTop.Size = new System.Drawing.Size(820, 51);
             // 
             // barDockControlBottom
             // 
@@ -190,7 +198,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 527);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(800, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(820, 23);
             // 
             // barDockControlLeft
             // 
@@ -204,7 +212,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(800, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(820, 51);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 476);
             // 
@@ -239,130 +247,6 @@
             // lOPTableAdapter
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
-            // 
-            // kHOABindingNavigator
-            // 
-            this.kHOABindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.kHOABindingNavigator.BindingSource = this.bdsKhoa;
-            this.kHOABindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.kHOABindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.kHOABindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.kHOABindingNavigatorSaveItem});
-            this.kHOABindingNavigator.Location = new System.Drawing.Point(0, 51);
-            this.kHOABindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.kHOABindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.kHOABindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.kHOABindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.kHOABindingNavigator.Name = "kHOABindingNavigator";
-            this.kHOABindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.kHOABindingNavigator.Size = new System.Drawing.Size(800, 25);
-            this.kHOABindingNavigator.TabIndex = 4;
-            this.kHOABindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // kHOABindingNavigatorSaveItem
-            // 
-            this.kHOABindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.kHOABindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("kHOABindingNavigatorSaveItem.Image")));
-            this.kHOABindingNavigatorSaveItem.Name = "kHOABindingNavigatorSaveItem";
-            this.kHOABindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.kHOABindingNavigatorSaveItem.Text = "Save Data";
-            this.kHOABindingNavigatorSaveItem.Click += new System.EventHandler(this.kHOABindingNavigatorSaveItem_Click);
             // 
             // gcKhoa
             // 
@@ -424,21 +308,105 @@
             // cmbCoSo
             // 
             this.cmbCoSo.FormattingEnabled = true;
-            this.cmbCoSo.Location = new System.Drawing.Point(261, 87);
+            this.cmbCoSo.Location = new System.Drawing.Point(266, 82);
             this.cmbCoSo.Name = "cmbCoSo";
             this.cmbCoSo.Size = new System.Drawing.Size(121, 21);
-            this.cmbCoSo.TabIndex = 16;
-            this.cmbCoSo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbCoSo.TabIndex = 21;
+            this.cmbCoSo.SelectedIndexChanged += new System.EventHandler(this.cmbCoSo_SelectedIndexChanged);
+            // 
+            // mAKHLabel
+            // 
+            mAKHLabel.AutoSize = true;
+            mAKHLabel.Location = new System.Drawing.Point(80, 48);
+            mAKHLabel.Name = "mAKHLabel";
+            mAKHLabel.Size = new System.Drawing.Size(41, 13);
+            mAKHLabel.TabIndex = 25;
+            mAKHLabel.Text = "MAKH:";
+            // 
+            // txtMKH
+            // 
+            this.txtMKH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsKhoa, "MAKH", true));
+            this.txtMKH.Location = new System.Drawing.Point(127, 45);
+            this.txtMKH.MenuManager = this.barManager1;
+            this.txtMKH.Name = "txtMKH";
+            this.txtMKH.Size = new System.Drawing.Size(100, 20);
+            this.txtMKH.TabIndex = 26;
+            // 
+            // tENKHLabel
+            // 
+            tENKHLabel.AutoSize = true;
+            tENKHLabel.Location = new System.Drawing.Point(434, 48);
+            tENKHLabel.Name = "tENKHLabel";
+            tENKHLabel.Size = new System.Drawing.Size(47, 13);
+            tENKHLabel.TabIndex = 26;
+            tENKHLabel.Text = "TENKH:";
+            // 
+            // txtTenKH
+            // 
+            this.txtTenKH.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsKhoa, "TENKH", true));
+            this.txtTenKH.Location = new System.Drawing.Point(487, 45);
+            this.txtTenKH.MenuManager = this.barManager1;
+            this.txtTenKH.Name = "txtTenKH";
+            this.txtTenKH.Size = new System.Drawing.Size(100, 20);
+            this.txtTenKH.TabIndex = 27;
+            // 
+            // mACSLabel
+            // 
+            mACSLabel.AutoSize = true;
+            mACSLabel.Location = new System.Drawing.Point(80, 123);
+            mACSLabel.Name = "mACSLabel";
+            mACSLabel.Size = new System.Drawing.Size(40, 13);
+            mACSLabel.TabIndex = 27;
+            mACSLabel.Text = "MACS:";
+            // 
+            // txtMACS
+            // 
+            this.txtMACS.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsKhoa, "MACS", true));
+            this.txtMACS.Location = new System.Drawing.Point(127, 120);
+            this.txtMACS.MenuManager = this.barManager1;
+            this.txtMACS.Name = "txtMACS";
+            this.txtMACS.Size = new System.Drawing.Size(100, 20);
+            this.txtMACS.TabIndex = 28;
+            // 
+            // btnReload
+            // 
+            this.btnReload.Caption = "Reload";
+            this.btnReload.Id = 6;
+            this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Caption = "Thoát";
+            this.btnExit.Id = 7;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtMACS);
+            this.groupBox1.Controls.Add(tENKHLabel);
+            this.groupBox1.Controls.Add(mACSLabel);
+            this.groupBox1.Controls.Add(this.txtTenKH);
+            this.groupBox1.Controls.Add(mAKHLabel);
+            this.groupBox1.Controls.Add(this.txtMKH);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 343);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(820, 184);
+            this.groupBox1.TabIndex = 29;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // frmKhoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 550);
+            this.ClientSize = new System.Drawing.Size(820, 550);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmbCoSo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gcKhoa);
-            this.Controls.Add(this.kHOABindingNavigator);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -449,12 +417,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsKhoa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kHOABindingNavigator)).EndInit();
-            this.kHOABindingNavigator.ResumeLayout(false);
-            this.kHOABindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcKhoa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMKH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMACS.Properties)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,27 +440,14 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private System.Windows.Forms.BindingNavigator kHOABindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private DevExpress.XtraBars.BarButtonItem btnThem;
+        private DevExpress.XtraBars.BarButtonItem btnXoa;
+        private DevExpress.XtraBars.BarButtonItem btnSua;
+        private DevExpress.XtraBars.BarButtonItem btnGhi;
+        private DevExpress.XtraBars.BarButtonItem btnUndo;
+        private DevExpress.XtraBars.BarButtonItem btnThoat;
         private System.Windows.Forms.BindingSource bdsKhoa;
         private DS dS;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton kHOABindingNavigatorSaveItem;
         private DSTableAdapters.KHOATableAdapter kHOATableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl gcKhoa;
@@ -502,5 +459,11 @@
         private System.Windows.Forms.BindingSource bdsLop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbCoSo;
+        private DevExpress.XtraEditors.TextEdit txtMACS;
+        private DevExpress.XtraEditors.TextEdit txtTenKH;
+        private DevExpress.XtraEditors.TextEdit txtMKH;
+        private DevExpress.XtraBars.BarButtonItem btnReload;
+        private DevExpress.XtraBars.BarButtonItem btnExit;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

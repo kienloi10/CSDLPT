@@ -108,5 +108,53 @@ namespace frmMain
                 f.Show();
             }
         }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmTaoTaiKhoan));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmTaoTaiKhoan f = new frmTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnBoDe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmBoDe));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmBoDe f = new frmBoDe();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnGVDK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmGVDK));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmGVDK f = new frmGVDK();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnXemBD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmBangDiem));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmBangDiem f = new frmBangDiem();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

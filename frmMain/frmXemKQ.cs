@@ -14,15 +14,43 @@ namespace frmMain
     public partial class frmXemKQ : Form
     {
         public List<CAUHOI> ch;
+        public static String malop = "";
+        public static String mamonhoc = "";
+        public static String lan = "";
+        public static String ngay = "";
+        public static String cautraloi = "";
+        public static double diem = 0;
         public frmXemKQ()
         {
             InitializeComponent();
-            HienThi();
+            //HienThi();
         }
 
         private void frmXemKQ_Load(object sender, EventArgs e)
         {
-
+            if (Program.mGroup == "SINHVIEN")
+            {
+                txtHoTen.Text = Program.mHoten;
+                String strlenh = "EXEC SP_TimLopCuaSV '" + Program.username + "'";
+                Program.myReader = Program.ExecSqlDataReader(strlenh);
+                if (Program.myReader == null) return;
+                Program.myReader.Read();
+                txtLop.Text = Program.myReader.GetString(0);
+                malop = Program.myReader.GetString(1);
+                Program.myReader.Close();
+                string sql = "EXEC SP_MonHocXemKQ '" + Program.username.Trim() + "'" ;
+                cmbMH.DataSource = Program.ExecSqlDataTable(sql, Program.connstr);
+                cmbMH.ValueMember = Program.ExecSqlDataTable(sql, Program.connstr).Columns["MAMH"].ToString();
+                cmbMH.DisplayMember = Program.ExecSqlDataTable(sql, Program.connstr).Columns["TENMH"].ToString();
+                if(cmbMH.SelectedValue == null)
+                {
+                    //Messege...
+                }
+                else
+                {
+                    mamonhoc = cmbMH.SelectedValue.ToString().Trim();
+                }
+            }
         }
 
         public void layCTCauHoi()
@@ -50,17 +78,30 @@ namespace frmMain
         public void PhanTichBaiThi()
         {
             ch = new List<CAUHOI>();
-            String cautraloi = "26-D 42-A 68-B 41-C 25-D 31- 23- 225- 69- 21- 38- 57- 52- 51- 36- 72- 67- 50- 60- 53-";
-            String[] arrListStr = cautraloi.Split(' ');
+            //cautraloi = "26-D 42-A 68-B 41-C 25-D 31- 23- 225- 69- 21- 38- 57- 52- 51- 36- 72- 67- 50- 60- 53-";
+            String[] arrListStr = cautraloi.Trim().Split(' ');
             for(int i=0; i<arrListStr.Length; i++)
             {
                 String[] temp = arrListStr[i].Split('-');
-                String tam1 = temp[0];
-                String tam2 = temp[1];
-                CAUHOI chtam = new CAUHOI();
-                chtam.MACH1 = Int16.Parse(tam1);
-                chtam.Chon1 = tam2;
-                ch.Add(chtam);
+                String tam1 = "";
+                String tam2 = "";
+                if (temp.Length==2)
+                {
+                    tam1 = temp[0];
+                    tam2 = temp[1];
+                }
+                else
+                {
+                    tam1 = temp[0];
+                }
+                if(tam1 != "")
+                {
+                    CAUHOI chtam = new CAUHOI();
+                    chtam.MACH1 = Int16.Parse(tam1);
+                    chtam.Chon1 = tam2;
+                    ch.Add(chtam);
+                }
+                
             }
             if(ch.Count!= 0)
             {
@@ -98,6 +139,58 @@ namespace frmMain
             }
             
             this.gvCH.DataSource = dt;
+        }
+
+        private void cmbMH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mamonhoc.Trim() == "")
+            {
+                return;
+            }
+            mamonhoc = cmbMH.SelectedValue.ToString().Trim();
+            //SqlDataReader myReader;
+            /*string sql1 = "EXEC SP_LanXemKQ '" + Program.username.Trim() + "','" + mamonhoc + "'" ;
+            cmbNgay.DataSource = Program.ExecSqlDataTable(sql1, Program.connstr);
+            cmbNgay.ValueMember = Program.ExecSqlDataTable(sql1, Program.connstr).Columns["LAN"].ToString();
+            cmbNgay.DisplayMember = Program.ExecSqlDataTable(sql1, Program.connstr).Columns["LAN"].ToString();*/
+
+            
+            
+        }
+
+        private void cmbNgay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lan = cmbNgay.SelectedValue.ToString().Trim();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lan = textBox2.Text.Trim();
+            string sql = "EXEC SP_LAYDSCHSAUKHITHI '"+Program.username+"','"+mamonhoc+"','"+lan+"'";
+            SqlDataReader myReader;
+            myReader = Program.ExecSqlDataReader(sql);
+            if(myReader.Read())
+            {
+                cautraloi = myReader.GetString(0);
+                diem = myReader.GetDouble(1);
+                ngay = myReader.GetDateTime(2).ToString();
+                txtNgay.Text = ngay;
+                txtDiem.Text = diem.ToString();
+                myReader.Close();
+                HienThi();
+            }
+            else
+            {
+                myReader.Close();
+                //messege
+            }
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
