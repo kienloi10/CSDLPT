@@ -28,6 +28,8 @@ namespace frmMain
 
         private void frmXemKQ_Load(object sender, EventArgs e)
         {
+            txtNgay.Enabled = false;
+            txtDiem.Enabled = false;
             if (Program.mGroup == "SINHVIEN")
             {
                 txtHoTen.Text = Program.mHoten;

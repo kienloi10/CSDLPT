@@ -180,3 +180,5 @@ D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.ReportAppServer.
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\Nam 4\CSDLPH-H\DoAn\DoAn1\frmMain\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
